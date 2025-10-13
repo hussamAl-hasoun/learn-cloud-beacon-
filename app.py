@@ -1,14 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask
 
 # Initialize the Flask application
-app = Flask(__name__)
+# This special configuration tells Flask to serve files from the main folder
+app = Flask(__name__, static_folder='.', static_url_path='')
 
-# Define the main route that will render the index.html file
+# This route will serve your index.html file
 @app.route('/')
 def home():
-    # This function looks for 'index.html' in the 'templates' folder
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
-# Run the application on port 5000, accessible from anywhere
+# This handles any other file requests like style.css or script.js
+@app.route('/<path:path>')
+def all_files(path):
+    return app.send_static_file(path)
+
+# Run the application on port 5000
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
