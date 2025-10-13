@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Define the main route
 @app.route('/')
 def hello():
-    return "Welcome to my CI/CD Graduation Project on AWS!"
+    return "عمي ابو الحس"
 
 # Run the application on port 5000, accessible from anywhere
 if __name__ == '__main__':
