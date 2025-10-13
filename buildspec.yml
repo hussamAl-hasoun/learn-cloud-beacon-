@@ -4,14 +4,20 @@ phases:
   install:
     runtime-versions:
       python: 3.9
+    commands:
+      # Install Git
+      - yum install -y git
   pre_build:
     commands:
+      - echo "Cloning the repository..."
+      # Clone the specific branch from GitHub
+      - git clone --branch main https://github.com/hussamAl-hasoun/learn-cloud-beacon-.git .
       - echo "Installing dependencies..."
       - pip install -r requirements.txt
   build:
     commands:
       - echo "Build started on `date`"
-      - echo "Nothing to build for Python, just packaging artifacts."
+      - echo "No build commands needed for this project."
   post_build:
     commands:
       - echo "Build completed on `date`"
