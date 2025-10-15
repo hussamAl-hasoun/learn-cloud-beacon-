@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository
-        uses: actions/checkout@v4   # <--- تم التحديث هنا
+        uses: actions/checkout@v4
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -31,7 +31,10 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3   # <--- تم التحديث هنا
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # This tells the action to upload the 'dist' folder
+          path: ./dist   # <--- هذا هو السطر المهم الذي تم إصلاحه
 
   deploy:
     name: Deploy to Pages
@@ -43,4 +46,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4   # <--- تم التحديث هنا
+        uses: actions/deploy-pages@v4
