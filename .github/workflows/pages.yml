@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # <--- تم التحديث هنا
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -31,9 +31,7 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./dist # Uploads the 'dist' folder which contains the finished website
+        uses: actions/upload-pages-artifact@v3   # <--- تم التحديث هنا
 
   deploy:
     name: Deploy to Pages
@@ -45,4 +43,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4   # <--- تم التحديث هنا
